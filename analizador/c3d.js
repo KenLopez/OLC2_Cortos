@@ -72,12 +72,12 @@
   }
 */
 var c3d = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,5],$V1=[1,6],$V2=[1,7],$V3=[1,8],$V4=[1,5,7,12],$V5=[1,9],$V6=[1,10],$V7=[1,5,7,8,10,12];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,4],$V1=[1,9],$V2=[1,10],$V3=[1,11],$V4=[1,12],$V5=[1,5,7,22],$V6=[1,14],$V7=[1,15],$V8=[1,16],$V9=[1,17],$Va=[1,5,7,10,12,13,14,22],$Vb=[1,18],$Vc=[1,19],$Vd=[1,5,7,10,12,13,14,15,17,22],$Ve=[1,20],$Vf=[1,21],$Vg=[1,5,7,10,12,13,14,15,17,18,20,22];
 var parser = {trace: function trace () { },
 yy: {},
-symbols_: {"error":2,"S":3,"E":4,"mas":5,"T":6,"menos":7,"por":8,"F":9,"div":10,"parea":11,"parec":12,"id":13,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"mas",7:"menos",8:"por",10:"div",11:"parea",12:"parec",13:"id"},
-productions_: [0,[3,1],[4,3],[4,3],[4,1],[6,3],[6,3],[6,1],[9,3],[9,1]],
+symbols_: {"error":2,"S":3,"L":4,"or":5,"N":6,"and":7,"not":8,"C":9,"igual":10,"E":11,"diff":12,"menor":13,"mayor":14,"mas":15,"T":16,"menos":17,"por":18,"F":19,"div":20,"parea":21,"parec":22,"id":23,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"or",7:"and",8:"not",10:"igual",12:"diff",13:"menor",14:"mayor",15:"mas",17:"menos",18:"por",20:"div",21:"parea",22:"parec",23:"id"},
+productions_: [0,[3,1],[4,3],[4,3],[4,1],[6,2],[6,1],[9,4],[9,4],[9,3],[9,3],[9,4],[9,4],[9,1],[11,3],[11,3],[11,1],[16,3],[16,3],[16,1],[19,3],[19,1]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -86,31 +86,89 @@ switch (yystate) {
 case 1:
 console.log($$[$0].C3D);
 break;
-case 2: case 3: case 5: case 6:
+case 2:
+
+        var LV = `${$$[$0-2].LV},${$$[$0].LV}`;
+        var LF = $$[$0].LF;
+        var C3D = `--------------------\n${$$[$0-2].C3D}${$$[$0-2].LV}:\n${$$[$0].C3D}--LV: ${LV}\n--LF: ${LF}\n--------------------\n`;
+        this.$ = { LV: LV, LF:LF, C3D:C3D };
+    
+break;
+case 3:
+
+        var LV = $$[$0].LV;
+        var LF = `${$$[$0-2].LF},${$$[$0].LF}`;
+        var C3D = `--------------------\n${$$[$0-2].C3D}${$$[$0-2].LV}:\n${$$[$0].C3D}--LV: ${LV}\n--LF: ${LF}\n--------------------\n`;
+        this.$ = { LV: LV, LF:LF, C3D:C3D };
+    
+break;
+case 4: case 6:
+
+        this.$ = { LV: $$[$0].LV, LF:$$[$0].LF, C3D:$$[$0].C3D };
+    
+break;
+case 5:
+
+        var LV = $$[$0].LF;
+        var LF = $$[$0].LV;
+        var C3D = `---------------\n${$$[$0].C3D}--LV: ${LV}\n--LF: ${LF}\n---------------\n`
+        this.$ = { LV: LV, LF: LF, C3D: C3D };
+    
+break;
+case 7: case 8: case 11:
+
+        var LV = new_label();
+        var LF = new_label();
+        var C3D = `----------\n${$$[$0-3].C3D}${$$[$0].C3D}if ${$$[$0-3].TMP}${$$[$0-2]}${$$[$0-1]}${$$[$0].TMP} goto ${LV}\ngoto ${LF}\n--LV: ${LV}\n--LF: ${LF}\n----------\n`;
+        this.$ = { LV: LV, LF:LF, C3D:C3D };
+    
+break;
+case 9: case 10:
+
+        var LV = new_label();
+        var LF = new_label();
+        var C3D = `----------\n${$$[$0-2].C3D}${$$[$0].C3D}if ${$$[$0-2].TMP}${$$[$0-1]}${$$[$0].TMP} goto ${LV}\ngoto ${LF}\n--LV: ${LV}\n--LF: ${LF}\n----------\n`;
+        this.$ = { LV: LV, LF:LF, C3D:C3D };
+    
+break;
+case 12:
+
+        var LV = new_label();
+        var LF = new_label();
+        var C3D = `----------\n${$$[$0-3].C3D}${$$[$0].C3D}if ${$$[$0-3].TMP}${$$[$0-2]}${$$[$0-1]}${$$[$0].TMP} goto ${LV}\ngoto ${LF}\n--LV: ${LV}\n--LF: ${LF}\n----------\n`;
+        this.$ = { LV: LV, LF:LF, C3D:C3D }
+    
+break;
+case 13:
+
+        this.$ = { TMP: $$[$0].TMP, C3D:$$[$0].C3D };
+    
+break;
+case 14: case 15: case 17: case 18:
   
-        let TMP = new_temp();
-        let C3D = `${$$[$0-2].C3D}${$$[$0].C3D}${TMP} = ${$$[$0-2].TMP} ${$$[$0-1]} ${$$[$0].TMP}\n`; 
+        var TMP = new_temp();
+        var C3D = `${$$[$0-2].C3D}${$$[$0].C3D}${TMP} = ${$$[$0-2].TMP} ${$$[$0-1]} ${$$[$0].TMP}\n`; 
         this.$ = { TMP: TMP, C3D: C3D };
     
 break;
-case 4: case 7:
+case 16: case 19:
   
         this.$ = { TMP: $$[$0].TMP, C3D:$$[$0].C3D };
     
 break;
-case 8:
+case 20:
   
         this.$ = { TMP: $$[$0-1].TMP, C3D:$$[$0-1].C3D };
     
 break;
-case 9:
+case 21:
   
         this.$ = { TMP: $$[$0], C3D:'' };
     
 break;
 }
 },
-table: [{3:1,4:2,6:3,9:4,11:$V0,13:$V1},{1:[3]},{1:[2,1],5:$V2,7:$V3},o($V4,[2,4],{8:$V5,10:$V6}),o($V7,[2,7]),{4:11,6:3,9:4,11:$V0,13:$V1},o($V7,[2,9]),{6:12,9:4,11:$V0,13:$V1},{6:13,9:4,11:$V0,13:$V1},{9:14,11:$V0,13:$V1},{9:15,11:$V0,13:$V1},{5:$V2,7:$V3,12:[1,16]},o($V4,[2,2],{8:$V5,10:$V6}),o($V4,[2,3],{8:$V5,10:$V6}),o($V7,[2,5]),o($V7,[2,6]),o($V7,[2,8])],
+table: [{3:1,4:2,6:3,8:$V0,9:5,11:6,16:7,19:8,21:$V1,23:$V2},{1:[3]},{1:[2,1],5:$V3,7:$V4},o($V5,[2,4]),{9:13,11:6,16:7,19:8,21:$V1,23:$V2},o($V5,[2,6],{10:$V6,12:$V7,13:$V8,14:$V9}),o($Va,[2,13],{15:$Vb,17:$Vc}),o($Vd,[2,16],{18:$Ve,20:$Vf}),o($Vg,[2,19]),{4:22,6:3,8:$V0,9:5,11:6,16:7,19:8,21:$V1,23:$V2},o($Vg,[2,21]),{6:23,8:$V0,9:5,11:6,16:7,19:8,21:$V1,23:$V2},{6:24,8:$V0,9:5,11:6,16:7,19:8,21:$V1,23:$V2},o($V5,[2,5],{10:$V6,12:$V7,13:$V8,14:$V9}),{10:[1,25]},{10:[1,26]},{10:[1,28],11:27,16:7,19:8,21:$V1,23:$V2},{10:[1,30],11:29,16:7,19:8,21:$V1,23:$V2},{16:31,19:8,21:$V1,23:$V2},{16:32,19:8,21:$V1,23:$V2},{19:33,21:$V1,23:$V2},{19:34,21:$V1,23:$V2},{5:$V3,7:$V4,22:[1,35]},o($V5,[2,2]),o($V5,[2,3]),{11:36,16:7,19:8,21:$V1,23:$V2},{11:37,16:7,19:8,21:$V1,23:$V2},o($Va,[2,9],{15:$Vb,17:$Vc}),{11:38,16:7,19:8,21:$V1,23:$V2},o($Va,[2,10],{15:$Vb,17:$Vc}),{11:39,16:7,19:8,21:$V1,23:$V2},o($Vd,[2,14],{18:$Ve,20:$Vf}),o($Vd,[2,15],{18:$Ve,20:$Vf}),o($Vg,[2,17]),o($Vg,[2,18]),o($Vg,[2,20]),o($Va,[2,7],{15:$Vb,17:$Vc}),o($Va,[2,8],{15:$Vb,17:$Vc}),o($Va,[2,12],{15:$Vb,17:$Vc}),o($Va,[2,11],{15:$Vb,17:$Vc})],
 defaultActions: {},
 parseError: function parseError (str, hash) {
     if (hash.recoverable) {
@@ -260,10 +318,16 @@ parse: function parse(input) {
 }};
 
     var correlativo = 0;
-    new_temp = ()=> {
+    var correlativo_label = 0;
+    new_temp = () => {
         let temp = `T${correlativo}`;
         correlativo++;
         return temp;
+    }; 
+    new_label = () => {
+        let label = `L${correlativo_label}`;
+        correlativo_label++;
+        return label;
     }; 
 /* generated by jison-lex 0.3.4 */
 var lexer = (function(){
@@ -595,24 +659,46 @@ var YYSTATE=YY_START;
 switch($avoiding_name_collisions) {
 case 0://Ignorar espacios vacíos
 break;
-case 1:return 8;
+case 1:return 18;
 break;
-case 2:return 5;
+case 2:return 15;
 break;
-case 3:return 7;
+case 3:return 17;
 break;
-case 4:return 10;
+case 4:return 20;
 break;
-case 5:return 11;
+case 5:return 21;
 break;
-case 6:return 12;
+case 6:return 22;
 break;
-case 7:return 13;
+case 7:return 'llavea';
+break;
+case 8:return 'llavec';
+break;
+case 9:return 13;
+break;
+case 10:return 14;
+break;
+case 11:return 10;
+break;
+case 12:return 12;
+break;
+case 13:return 'if';
+break;
+case 14:return 'else';
+break;
+case 15:return 5;
+break;
+case 16:return 7;
+break;
+case 17:return 8;
+break;
+case 18:return 23;
 break;
 }
 },
-rules: [/^(?:\s+)/,/^(?:\*)/,/^(?:\+)/,/^(?:-)/,/^(?:\/)/,/^(?:\()/,/^(?:\))/,/^(?:([a-z0-9A-Z_ñÑ])+)/],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7],"inclusive":true}}
+rules: [/^(?:\s+)/,/^(?:\*)/,/^(?:\+)/,/^(?:-)/,/^(?:\/)/,/^(?:\()/,/^(?:\))/,/^(?:\{)/,/^(?:\})/,/^(?:<)/,/^(?:>)/,/^(?:=)/,/^(?:!)/,/^(?:if\b)/,/^(?:else\b)/,/^(?:or\b)/,/^(?:and\b)/,/^(?:not\b)/,/^(?:([a-z0-9A-Z_ñÑ])+)/],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],"inclusive":true}}
 });
 return lexer;
 })();

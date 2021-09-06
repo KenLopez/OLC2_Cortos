@@ -1,6 +1,7 @@
 const { parser } = require("./analizador/c3d");
 
-const entrada = "(x+y)/(y*x)+z-j/(y-z)";
+const entrada = 
+`a*c<b+c`;
 
 try{
     parser.parse(entrada);
