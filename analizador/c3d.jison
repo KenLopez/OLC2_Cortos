@@ -98,7 +98,7 @@ L
 ;
 
 N
-    :not C
+    :not N
     {
         var LV = $2.LF;
         var LF = $2.LV;

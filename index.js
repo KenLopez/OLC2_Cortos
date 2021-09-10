@@ -1,7 +1,7 @@
 const { parser } = require("./analizador/c3d");
 
 const entrada = 
-`a*c<b+c`;
+`not not not a<b`;
 
 try{
     parser.parse(entrada);
